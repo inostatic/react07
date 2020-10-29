@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import './scss/index.scss'
 import { getData, searchByStrAC, sortByHeaderAC } from './redux/reducers/action'
 import { useDispatch, useSelector } from 'react-redux'
-import { Task } from './components/Task'
+import { TableRow } from './components/TableRow'
 import { TableHeader } from './components/TableHeader'
 import { Search } from './components/Serach'
 
@@ -28,7 +28,7 @@ export const App = () => {
       <div className="table">
         <TableHeader HandlerSort={HandlerSort} />
         {data &&
-          data.map((item, index) => <Task key={index + item.name} {...item} />)}
+          data.map((item, index) => <TableRow key={index + item.name} {...item} />)}
         {!data.length && <div className="data-empty">Записи не найдены</div>}
       </div>
     </div>

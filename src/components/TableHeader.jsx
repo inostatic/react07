@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 
-export const TableHeader = ({HandlerSort}) => {
+export const TableHeader = React.memo(({HandlerSort}) => {
   const [before, after] = ['arrow_drop_down', 'arrow_drop_up']
   const stateArrow = ['name', 'sites', 'type', 'status'].reduce(
     (a, e) => ({...a, [e]: {el: before, flag: false}}), {})
@@ -47,4 +47,4 @@ export const TableHeader = ({HandlerSort}) => {
       </div>
     </div>
   )
-}
+})

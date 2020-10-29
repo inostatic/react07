@@ -1,11 +1,11 @@
 import React from 'react'
 
-export const Task = ({ id, name, sites, type, status }) => {
+export const TableRow = ({ id, name, sites, type, status }) => {
   const site = sites ? `${sites} site` : sites
 
   return (
-    <div className="task-item">
-      <div className="task-item__container">
+    <div className="table-row">
+      <div className="table-row__container">
         <div>{name}</div>
         <div>{site}</div>
         <div className="orange">{type}</div>

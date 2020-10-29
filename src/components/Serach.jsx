@@ -1,10 +1,11 @@
 import React, { useState } from 'react'
 
-export const Search = ({ HandlerSearch }) => {
+export const Search = React.memo(({ HandlerSearch }) => {
   const [text, setText] = useState('')
 
   const search = () => {
     HandlerSearch(text)
+    setText('')
   }
 
   return (
@@ -19,4 +20,4 @@ export const Search = ({ HandlerSearch }) => {
       />
     </div>
   )
-}
+})
