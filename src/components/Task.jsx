@@ -1,20 +1,17 @@
 import React from 'react'
-import classNames from 'classnames'
 
-export const Task = ({id, name, sites, type, status}) => {
+export const Task = ({ id, name, sites, type, status }) => {
+  const site = sites ? `${sites} site` : sites
 
-    const className = classNames({
-        'task': true,
-        'blocked': status === 'blocked',
-        'disable': status === 'disable'
-    })
   return (
-    <div className={className}>
-      <div className="task__container">
-          <div>{id}</div>
-          <div>{name}</div>
-          <div>{sites}</div>
-          <div>{type}</div>
+    <div className="task-item">
+      <div>{name}</div>
+      <div>{site}</div>
+      <div className="orange">{type}</div>
+      <div>
+        {status === 'blocked' ? <i className="material-icons">lock</i> : ''}
+        {status === 'disable' ? <span className="disable">OFF</span> : ''}
+        {status === 'enable' ? <span className="enable">ON</span> : ''}
       </div>
     </div>
   )
