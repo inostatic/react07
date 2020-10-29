@@ -1,0 +1,42 @@
+.App {
+  width: 1400px;
+  margin: 100px auto;
+  font-family: Arial;
+}
+
+.task {
+  background: #e2dede;
+  .task__container {
+    display: flex;
+    border: 1px solid #ccc;
+    border-bottom: none;
+    justify-content: space-between;
+
+
+    div {
+      padding: .5rem 1rem;
+      width: 25%;
+      border-right: 1px solid #ccc;
+      &:last-child {
+        border-right: none;
+      }
+    }
+
+  }
+  &:last-child {
+    border-bottom: 1px solid #ccc;;
+  }
+}
+
+.header {
+  background: #000;
+  color: white;
+}
+
+.disable {
+  text-decoration: line-through;
+}
+
+.blocked {
+  opacity: 0.5;
+}
