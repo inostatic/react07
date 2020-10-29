@@ -1,0 +1,31 @@
+@import "variables";
+@import "tableHeader";
+@import "search";
+@import "task";
+
+.App {
+  width: 1000px;
+  margin: 100px auto;
+  font-family: Arial;
+  padding: 1rem;
+  background: #fafafa;
+}
+
+.data-empty {
+  padding: 1rem;
+  text-align: right;
+}
+
+.disable {
+  background: rgb(153, 153, 153);
+  color: white;
+  padding: 0.2rem 1rem;
+  border-radius: 15px;
+}
+
+.enable {
+  background: $color1;
+  color: white;
+  padding: 0.2rem 1rem;
+  border-radius: 15px;
+}

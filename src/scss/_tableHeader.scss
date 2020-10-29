@@ -1,0 +1,27 @@
+@import "variables";
+
+.table-header {
+  display: flex;
+  color: $color1;
+  font-style: italic;
+  padding: 2rem;
+  border-bottom: 1px solid $color2;
+
+  div {
+    width: 15%;
+    text-align: center;
+
+    b {
+      cursor: pointer;
+
+      span {
+        font-size: 14px;
+      }
+    }
+
+    &:first-child {
+      width: 55%;
+      text-align: left;
+    }
+  }
+}

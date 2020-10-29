@@ -1,0 +1,28 @@
+@import "variables";
+
+.task-item {
+  display: flex;
+  color: $color3;
+  padding: 2rem;
+  font-size: 16px;
+  border-bottom: 1px solid $color2;
+  cursor: pointer;
+
+  div {
+    width: 15%;
+    text-align: center;
+
+    &:first-child {
+      width: 55%;
+      text-align: left;
+    }
+  }
+
+  &:hover {
+    box-shadow: 0 0 5px $color3;
+  }
+
+  &:last-child {
+    border-bottom: none;
+  }
+}

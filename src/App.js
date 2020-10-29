@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import './App.scss'
+import './scss/index.scss'
 import { getData, searchByStrAC, sortByHeaderAC } from './redux/reducers/action'
 import { useDispatch, useSelector } from 'react-redux'
 import { Task } from './components/Task'
