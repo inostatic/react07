@@ -1,49 +1,65 @@
 import React, {useState} from 'react'
 
 export const TableHeader = React.memo(({HandlerSort}) => {
-  const [before, after] = ['arrow_drop_down', 'arrow_drop_up']
-  const stateArrow = ['name', 'sites', 'type', 'status'].reduce(
-    (a, e) => ({...a, [e]: {el: before, flag: false}}), {})
-  const [sortItem, setSortItem] = useState(stateArrow)
-
-  const sortChangeArrow = (key) => {
-    const el = after
-    const flag = !sortItem[key].flag
-    sortItem[key].el === before
-      ? setSortItem({...stateArrow, [key]: {el, flag}})
-      : setSortItem({...stateArrow})
+  const [down, up] = ['arrow_drop_down', 'arrow_drop_up']
+  const [select, setSelect] = useState('')
+  const dbRowName = {
+    'Tool name': 'name',
+    'Used on': 'sites',
+    'Type': 'type',
+    'Status': 'status'
   }
+  const initialHeaders = Object.keys(dbRowName)
+    .reduce((a, h) => (
+      {...a,
+        [h]: {
+          [up]: false,
+          [down]: false
+      }}), {})
+  const [headers, setHeaders] = useState(initialHeaders)
 
-  function sortBy(key) {
-    return () => {
-      sortChangeArrow(key)
-      HandlerSort({key, flag: sortItem[key].flag})
+  const HandlerArrows = (e) => {
+    const name = e.target.dataset.name
+    if (name) {
+      const active = headers[name][up]
+      ? {[up]: false, [down]: true}
+      : {[up]: true, [down]: false}
+
+      setSelect(name)
+      setHeaders({
+        ...initialHeaders,
+        [name]: active
+      })
+      HandlerSort({key: dbRowName[name], flag: headers[name][up]})
     }
   }
 
+
   return (
     <div className="table-header">
-      <div className="table-header__container">
-        <div onClick={sortBy('name')}>
-          <b>
-            Tool name<span className="material-icons">{sortItem.name.el}</span>
-          </b>
-        </div>
-        <div onClick={sortBy('sites')}>
-          <b>
-            Used on<span className="material-icons">{sortItem.sites.el}</span>
-          </b>
-        </div>
-        <div onClick={sortBy('type')}>
-          <b>
-            Type<span className="material-icons">{sortItem.type.el}</span>
-          </b>
-        </div>
-        <div onClick={sortBy('status')}>
-          <b>
-            Status<span className="material-icons">{sortItem.status.el}</span>
-          </b>
-        </div>
+      <div className="table-header__container" onClick={HandlerArrows}>
+        {
+          Object.keys(headers).map((name, i) =>
+            <div
+              key={i}
+              className='table-header__item'
+              data-name={name}>
+              <span data-name={name}>{name}</span>
+              <div
+                data-name={name}
+                className={`table-header__arrows ${name !== select ? 'opacity' : ''}`}>
+                <span
+                  data-name={name}
+                  className={`material-icons ${headers[name][up] ? 'active' : ''} `}
+                >{up}</span>
+                <span
+                  data-name={name}
+                  className={`material-icons arrow ${headers[name][down] ? 'active' : ''} `}
+                >{down}</span>
+              </div>
+            </div>
+          )
+        }
       </div>
     </div>
   )

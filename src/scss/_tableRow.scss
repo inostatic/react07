@@ -18,16 +18,17 @@
     .disable {
       background: rgb(153, 153, 153);
       color: white;
-      padding: 0.2rem 1rem;
+      padding: 0.2rem 1.1rem;
       border-radius: 15px;
     }
 
     .enable {
       background: $color1;
       color: white;
-      padding: 0.2rem 1rem;
+      padding: 0.2rem 1.5rem;
       border-radius: 15px;
     }
+
 
     .orange {
       color: orange;
@@ -36,6 +37,7 @@
     div {
       width: 15%;
       text-align: center;
+      padding-right: 10px;
 
       &:first-child {
         width: 55%;
@@ -43,7 +45,6 @@
       }
     }
   }
-
 
   &:hover {
     box-shadow: 0 0 10px $color3;
