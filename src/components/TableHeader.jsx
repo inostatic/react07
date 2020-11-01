@@ -1,15 +1,9 @@
 import React, {useState} from 'react'
 
-export const TableHeader = React.memo(({HandlerSort}) => {
+export const TableHeader = React.memo(({HandlerSort, colName}) => {
   const [down, up] = ['arrow_drop_down', 'arrow_drop_up']
   const [select, setSelect] = useState('')
-  const dbRowName = {
-    'Tool name': 'name',
-    'Used on': 'sites',
-    'Type': 'type',
-    'Status': 'status'
-  }
-  const initialHeaders = Object.keys(dbRowName)
+  const initialHeaders = Object.keys(colName)
     .reduce((a, h) => (
       {...a,
         [h]: {
@@ -30,7 +24,7 @@ export const TableHeader = React.memo(({HandlerSort}) => {
         ...initialHeaders,
         [name]: active
       })
-      HandlerSort({key: dbRowName[name], flag: headers[name][up]})
+      HandlerSort({key: colName[name], flag: headers[name][up]})
     }
   }
 

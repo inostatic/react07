@@ -26,7 +26,15 @@ export const App = () => {
     <div className="App">
       <Search HandlerSearch={HandlerSearch} />
       <div className="table">
-        <TableHeader HandlerSort={HandlerSort} />
+        <TableHeader
+          HandlerSort={HandlerSort}
+          colName={{
+            'Tool name': 'name',
+            'Used on': 'sites',
+            'Type': 'type',
+            'Status': 'status'
+          }}
+        />
         {data &&
           data.map((item, index) => <TableRow key={index + item.name} {...item} />)}
         {!data.length && <div className="data-empty">Записи не найдены</div>}
